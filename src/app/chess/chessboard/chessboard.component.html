@@ -1,0 +1,20 @@
+
+  <h3>About to render chessboard rows</h3>
+  {{master}}
+<div class="chessboard-wrapper">
+
+  <div class="chessboard-row" *ngFor="let row of chessboardRows; let idx = index;">
+
+    <app-chess-square *ngFor="let i of chessboardColumns; let innerIdx = index;" 
+    [chessPiece]="getChessPiece(row, i)" 
+    [className]="( (idx + innerIdx ) % 2 === 0) ? 'off-color' : ''"
+    [attr.data-idx]="idx"
+    [attr.data-row]="row"
+    [attr.data-inneridx]="innerIdx"
+    [attr.data-combined]="idx + row"
+    >
+
+    </app-chess-square>
+
+  </div>
+</div>

@@ -1,0 +1,11 @@
+
+<div class="chess-square">
+  <div *ngIf="chessPiece">
+    <img 
+    [title]="chessPiece.color + ' - ' + chessPiece.type"
+    [alt]="chessPiece.color + ' - ' + chessPiece.type"
+    [src]="'/assets/pieces/' + chessPiece.type + '-' + chessPiece.color + '.png' "
+     />
+  </div>
+</div>
+

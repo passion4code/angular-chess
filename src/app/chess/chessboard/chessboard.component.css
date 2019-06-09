@@ -1,0 +1,9 @@
+.chessboard-wrapper {
+    width: 640px;
+    border: solid 1px #223322;
+}
+
+
+.chessboard-row {
+    display: flex;
+}

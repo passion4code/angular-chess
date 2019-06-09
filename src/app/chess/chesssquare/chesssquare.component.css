@@ -1,0 +1,19 @@
+
+
+:host.off-color {
+    background-color: #223322;
+    color: #efd;
+}
+
+:host {
+    border: solid 1px #223322;
+    color: #223322;
+    flex: 1;
+}
+
+.chess-square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
