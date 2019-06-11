@@ -1,23 +1,48 @@
-import { ChessPiece, ChessRow, ChessColumn, ChessPieceType, ChessPieceColor } from '../types';
+import { ChessPiece, ChessRow, ChessColumn, ChessPieceType, ChessPieceColor, ChessSquare } from '../types';
 
 // responsible for awareness of pieces on the board and such
 export class BoardMaster {
-    activePieces: ChessPiece[];
+    // Who's in play?
+    private activePieces: ChessPiece[];
 
-    graveyardPieces: ChessPiece[];
+    // Who has died?
+    private graveyardPieces: ChessPiece[];
+
+    private activePlayer: ChessPieceColor;
 
     public startNewGame() {
         // reset pieces
         this.resetPieces();
+        this.activePlayer = 'white';
+    }
+
+    public getActivePlayer(): ChessPieceColor {
+        return this.activePlayer;
     }
 
     // Given a row and column, find the piece. If not found, will return undefined
     public getPieceBySquare(row: ChessRow, column: ChessColumn): ChessPiece|undefined {
         return this.activePieces.find(piece => {
-            return piece.row === row && piece.column === column;
+            return piece.square.row === row && piece.square.column === column;
         });
     }
 
+    // Move a piece from Point A to Point B, if no item exists in Point A, or if it cannot move to Point B, it will throw an exception
+    // Make sure to use the canMove() method
+    public movePiece(originPiece: ChessPiece, destinationSquare: ChessSquare) {
+        // do stuff
+       originPiece.square = destinationSquare;
+       console.log('New destination is set - did binding update?');
+        // setup a new piece with the new destinatino row and column
+        // this.activePieces.forEach(activePiece => {
+        //     if (activePiece.row === originRow && activePiece.column === originColumn) {
+        //         activePiece.row = destinationRow;
+        //         activePiece.column = destinationColumn;
+        //     }
+        // });
+    }
+
+    // Resets the game pieces back to the starting points
     private resetPieces() {
         this.activePieces = [];
         const availableColors: ChessPieceColor[] = ['black', 'white'];
@@ -52,10 +77,12 @@ export class BoardMaster {
 
     private generatePiece(color: 'black' | 'white', type: ChessPieceType, row: ChessRow, column: ChessColumn): ChessPiece {
         return {
+            square: {
+                row,
+                column,
+            },
             color,
             type,
-            row,
-            column
         };
     }
 

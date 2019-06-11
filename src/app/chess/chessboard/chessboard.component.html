@@ -7,11 +7,15 @@
 
     <app-chess-square *ngFor="let i of chessboardColumns; let innerIdx = index;" 
     [chessPiece]="getChessPiece(row, i)" 
+    [square]="generateSquare(row, i)"
     [className]="( (idx + innerIdx ) % 2 === 0) ? 'off-color' : ''"
     [attr.data-idx]="idx"
     [attr.data-row]="row"
     [attr.data-inneridx]="innerIdx"
     [attr.data-combined]="idx + row"
+    (handleSelectPiece)="handlePieceClick($event)"
+    (handleClickEmptySquare)="handleSquareClick($event)"
+
     >
 
     </app-chess-square>

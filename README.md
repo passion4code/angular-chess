@@ -1,27 +1,31 @@
 # AngularChess
 
+I wanted to dip my toes in the Angular waters, so I decided to make a simple chess game. 
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
 
-## Development server
+## Local Setup
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To get started locally, make sure NodeJS and [Angular CLI](https://github.com/angular/angular-cli) are both installed, and run the following commands from your terminal
 
-## Code scaffolding
+```
+npm install
+npm run start
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Then open your browser to `http://localhost:4200`
 
-## Build
+## @TODO
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1. Implement "player turns"
+1. Restrict movement of pieces to only go where they are legally allowed
+1. Implement graveyard
+1. Implement logic for pawn reaching end space
+1. Determine check vs check mate
+1. Provide ability to reset game in UI
+1. Basic multiplayer support
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Chess Graphics 
+All graphics were pulled from  [Wikimedia Commons](https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent) author [CBurnett](https://en.wikipedia.org/wiki/User:Cburnett) 
