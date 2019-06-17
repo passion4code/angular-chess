@@ -34,6 +34,8 @@ export class BoardMaster {
     public movePiece(originPiece: ChessPiece, destinationSquare: ChessSquare) {
         // it seems that this is all we need to do for angular bindings to be updated on the reference to the object
         originPiece.square = destinationSquare;
+        // moving a piece also changes the active player
+        this.activePlayer = this.activePlayer === 'black' ? 'white' : 'black';
     }
 
     // Resets the game pieces back to the starting points

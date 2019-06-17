@@ -16,7 +16,7 @@
     align-items: center;
     justify-content: center;
     height: 80px;
-    border: solid 1px transparent;
+    border: solid 2px transparent;
 }
 
 .chess-square.selected {

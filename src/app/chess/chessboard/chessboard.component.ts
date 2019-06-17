@@ -39,8 +39,9 @@ export class ChessBoardComponent implements OnInit {
 
   handlePieceClick(piece: ChessPiece | undefined) {
     if (piece !== undefined) {
-      // @TODO check if it's already the selected piece, or if you're allowed to select this piece
-      this.setSelectedPiece(piece);
+      if (piece.color === this.boardMaster.getActivePlayer()) {
+        this.setSelectedPiece(piece);
+      }
     }
   }
 
@@ -59,6 +60,7 @@ export class ChessBoardComponent implements OnInit {
       this.selectedPiece,
       square
     );
+    this.selectedPiece = undefined;
   }
 
   isSquareSelected(row: ChessRow, column: ChessColumn): boolean {
