@@ -1,5 +1,5 @@
 
-<div class="chess-square" (click)="handleClick()">
+<div [class]="isSelected ? 'selected chess-square' : 'chess-square'" (click)="handleClick()">
   <div *ngIf="chessPiece">
     <img 
     [title]="chessPiece.color + ' - ' + chessPiece.type"

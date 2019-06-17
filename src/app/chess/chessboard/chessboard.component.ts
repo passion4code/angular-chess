@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChessPiece, ChessColumn, ChessRow, ChessSquare } from '../types';
-import {BoardMaster} from './board-master';
+import { BoardMaster } from '../boardmaster/boardmaster';
 
 @Component({
   selector: 'app-chessboard',
@@ -10,7 +10,7 @@ import {BoardMaster} from './board-master';
 export class ChessBoardComponent implements OnInit {
 
   // the board master is aware of piece positioning and move availability
-  private boardMaster: BoardMaster = new BoardMaster();
+  @Input() private boardMaster: BoardMaster;
 
   // Used for rendering
   public chessboardColumns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
@@ -19,7 +19,7 @@ export class ChessBoardComponent implements OnInit {
 
   private selectedPiece: ChessPiece;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     // initialize first placement of chess pieces
@@ -38,8 +38,6 @@ export class ChessBoardComponent implements OnInit {
   }
 
   handlePieceClick(piece: ChessPiece | undefined) {
-    console.log('Piece click called');
-    console.log(arguments);
     if (piece !== undefined) {
       // @TODO check if it's already the selected piece, or if you're allowed to select this piece
       this.setSelectedPiece(piece);
@@ -47,12 +45,10 @@ export class ChessBoardComponent implements OnInit {
   }
 
   handleSquareClick(square: ChessSquare) {
-    console.log('Square clicked', square);
     if (this.selectedPiece) {
       this.moveSelectedPiece(square);
     }
   }
-
 
   setSelectedPiece(piece: ChessPiece) {
     this.selectedPiece = piece;
@@ -63,6 +59,13 @@ export class ChessBoardComponent implements OnInit {
       this.selectedPiece,
       square
     );
+  }
+
+  isSquareSelected(row: ChessRow, column: ChessColumn): boolean {
+    if (!this.selectedPiece) {
+      return false;
+    }
+    return this.selectedPiece.square.row === row && this.selectedPiece.square.column === column;
   }
 
 }

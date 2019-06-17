@@ -16,4 +16,9 @@
     align-items: center;
     justify-content: center;
     height: 80px;
+    border: solid 1px transparent;
+}
+
+.chess-square.selected {
+    border-color: #ff0000;
 }

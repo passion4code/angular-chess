@@ -5,6 +5,8 @@ import { ChessComponent } from './chess/chess.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ChessBoardComponent } from './chess/chessboard/chessboard.component';
 import { ChessSquareComponent } from './chess/chesssquare/chesssquare.component';
+import { ChessGameStatusComponent } from './chess/chess-game-status/chess-game-status.component';
+import { ChessGameGraveyardComponent } from './chess/chess-game-graveyard/chess-game-graveyard.component';
 
 const routes: Routes = [
   { path: '', component: ChessComponent }
@@ -15,7 +17,9 @@ const routes: Routes = [
     AppComponent,
     ChessComponent,
     ChessBoardComponent,
-    ChessSquareComponent
+    ChessSquareComponent,
+    ChessGameStatusComponent,
+    ChessGameGraveyardComponent
   ],
   imports: [
     BrowserModule,

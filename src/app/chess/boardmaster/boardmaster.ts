@@ -1,7 +1,9 @@
 import { ChessPiece, ChessRow, ChessColumn, ChessPieceType, ChessPieceColor, ChessSquare } from '../types';
 
-// responsible for awareness of pieces on the board and such
 export class BoardMaster {
+
+    constructor() { }
+
     // Who's in play?
     private activePieces: ChessPiece[];
 
@@ -21,7 +23,7 @@ export class BoardMaster {
     }
 
     // Given a row and column, find the piece. If not found, will return undefined
-    public getPieceBySquare(row: ChessRow, column: ChessColumn): ChessPiece|undefined {
+    public getPieceBySquare(row: ChessRow, column: ChessColumn): ChessPiece | undefined {
         return this.activePieces.find(piece => {
             return piece.square.row === row && piece.square.column === column;
         });
@@ -30,16 +32,8 @@ export class BoardMaster {
     // Move a piece from Point A to Point B, if no item exists in Point A, or if it cannot move to Point B, it will throw an exception
     // Make sure to use the canMove() method
     public movePiece(originPiece: ChessPiece, destinationSquare: ChessSquare) {
-        // do stuff
-       originPiece.square = destinationSquare;
-       console.log('New destination is set - did binding update?');
-        // setup a new piece with the new destinatino row and column
-        // this.activePieces.forEach(activePiece => {
-        //     if (activePiece.row === originRow && activePiece.column === originColumn) {
-        //         activePiece.row = destinationRow;
-        //         activePiece.column = destinationColumn;
-        //     }
-        // });
+        // it seems that this is all we need to do for angular bindings to be updated on the reference to the object
+        originPiece.square = destinationSquare;
     }
 
     // Resets the game pieces back to the starting points
@@ -85,5 +79,4 @@ export class BoardMaster {
             type,
         };
     }
-
 }

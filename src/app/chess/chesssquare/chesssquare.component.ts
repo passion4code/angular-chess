@@ -12,14 +12,13 @@ export class ChessSquareComponent {
   @Output() handleClickEmptySquare: EventEmitter<ChessSquare> = new EventEmitter<ChessSquare>();
   @Input() chessPiece?: ChessPiece;
   @Input() square: ChessSquare;
+  @Input() isSelected: boolean;
   constructor() { }
 
-  handleClick() {
+  public handleClick() {
     if (this.chessPiece) {
-      console.log('Emitting piece click');
       this.handleSelectPiece.emit(this.chessPiece);
     } else {
-      console.log('Emitting empty square click');
       this.handleClickEmptySquare.emit(this.square);
     }
   }

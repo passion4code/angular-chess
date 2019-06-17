@@ -1,5 +1,7 @@
 <h1>Chess Game</h1>
 
+<p>This is a simple chess game written in <a href="https://angular.io">AngularJS</a>. </p>
 
-<app-chessboard></app-chessboard>
+<app-chessboard [boardMaster]="getBoardMaster()"></app-chessboard>
 
+<app-chess-game-status [boardMaster]="getBoardMaster()" ></app-chess-game-status>
